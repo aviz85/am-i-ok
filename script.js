@@ -119,6 +119,12 @@ function updateResultContent() {
 }
 
 function addShareButton() {
+    // Check if share button already exists
+    const existingShareBtn = document.querySelector('.share-btn');
+    if (existingShareBtn) {
+        return; // Don't create another button if one already exists
+    }
+    
     const encouragement = document.querySelector('.encouragement');
     const shareBtn = document.createElement('button');
     shareBtn.className = 'share-btn';
@@ -249,6 +255,12 @@ function restartQuiz() {
     
     // Clear confetti
     confettiContainer.innerHTML = '';
+    
+    // Remove existing share button if it exists
+    const existingShareBtn = document.querySelector('.share-btn');
+    if (existingShareBtn) {
+        existingShareBtn.remove();
+    }
     
     // Reset UI
     resultContainer.classList.add('hidden');
