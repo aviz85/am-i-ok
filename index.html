@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>האם אני בסדר? - קורס התבגרות Master X</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌟 האם אני בסדר? 🌟</h1>
+            <p class="subtitle">שאלון קצר וכיפי לתלמידי קורס ההתבגרות</p>
+        </header>
+
+        <div id="quiz-container" class="quiz-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            
+            <div class="question-container" id="question-container">
+                <div class="question active" data-question="1">
+                    <h2>💻 שאלה 1 מתוך 3</h2>
+                    <p class="question-text">האם התקנת ואתה רשום לקורסור (Cursor)?</p>
+                    <div class="answers">
+                        <button class="answer-btn" data-score="2">כן, התקנתי והכל עובד מעולה! 🎉</button>
+                        <button class="answer-btn" data-score="1">התקנתי אבל יש לי בעיות 🤔</button>
+                        <button class="answer-btn" data-score="0">עדיין לא התקנתי 😅</button>
+                    </div>
+                </div>
+
+                <div class="question" data-question="2">
+                    <h2>🚀 שאלה 2 מתוך 3</h2>
+                    <p class="question-text">האם הצלחת לבצע "התחלה נקיה" של פרוייקט כלשהו?</p>
+                    <div class="answers">
+                        <button class="answer-btn" data-score="2">כן, יצרתי פרוייקט מאפס! 💪</button>
+                        <button class="answer-btn" data-score="1">ניסיתי אבל נתקעתי 🤷</button>
+                        <button class="answer-btn" data-score="0">עדיין לא ניסיתי 😰</button>
+                    </div>
+                </div>
+
+                <div class="question" data-question="3">
+                    <h2>🔗 שאלה 3 מתוך 3</h2>
+                    <p class="question-text">האם חיברת MCP?</p>
+                    <div class="answers">
+                        <button class="answer-btn" data-score="2">כן, MCP מחובר ועובד! 🎯</button>
+                        <button class="answer-btn" data-score="1">ניסיתי אבל לא הצלחתי 😔</button>
+                        <button class="answer-btn" data-score="0">לא יודע מה זה MCP 🤷</button>
+                    </div>
+                    <div class="help-link">
+                        <a href="https://aviz.live/aviz_content/%d7%97%d7%99%d7%91%d7%95%d7%a8-mcp-%d7%a9%d7%9c-%d7%a1%d7%95%d7%a4%d7%91%d7%99%d7%99%d7%a1-%d7%95-context7/" target="_blank" class="mcp-help-btn">
+                            📚 הדרכה לחיבור MCP
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-container" class="result-container hidden">
+            <div class="confetti" id="confetti"></div>
+            <h1 class="result-title">🎉 כן, אתה בסדר גמור! 🎉</h1>
+            <div class="result-content">
+                <p class="result-text">
+                    אתה עושה מעולה! זכור שתהליך ההתבגרות הוא מסע, 
+                    ולכל אחד יש את הקצב שלו. אתה לא לבד בזה! 💪
+                </p>
+                <p class="encouragement">
+                    המורים שלך כאן בשבילך, ואתה יכול תמיד לפנות אליהם 
+                    עם שאלות או דאגות. אתה מדהים בדיוק כמו שאתה! ✨
+                </p>
+                <button id="restart-btn" class="restart-btn">עוד פעם! 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
+ 
