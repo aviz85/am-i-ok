@@ -124,6 +124,15 @@ header h1 {
     line-height: 1.6;
 }
 
+.question-subtext {
+    color: #99ff99;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-style: italic;
+    opacity: 0.8;
+}
+
 .answers {
     display: flex;
     flex-direction: column;
