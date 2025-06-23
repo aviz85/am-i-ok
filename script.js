@@ -113,7 +113,104 @@ function updateResultContent() {
         resultText.textContent = 'זה בסדר גמור! כולנו מתחילים איפשהו. יש לך את המוטיבציה וזה הדבר הכי חשוב. בואו נעבור יחד על הבסיס.';
         encouragement.textContent = 'אל תתייאש! כל מומחה היה פעם מתחיל. קדימה, בואו נלמד יחד! 🎯';
     }
+    
+    // Add share button
+    addShareButton();
 }
+
+function addShareButton() {
+    const encouragement = document.querySelector('.encouragement');
+    const shareBtn = document.createElement('button');
+    shareBtn.className = 'share-btn';
+    shareBtn.innerHTML = '📱 שתף עם החברים';
+    shareBtn.onclick = shareResults;
+    
+    encouragement.parentNode.insertBefore(shareBtn, encouragement.nextSibling);
+}
+
+function shareResults() {
+    let shareText = '';
+    let shareEmoji = '';
+    
+    if (totalScore >= 5) {
+        shareText = 'עשיתי את השאלון של קורס ההתבגרות ואני בסדר גמור! 🎉';
+        shareEmoji = '🎉';
+    } else if (totalScore >= 3) {
+        shareText = 'עשיתי את השאלון של קורס ההתבגרות ואני בדרך הנכונה! 👍';
+        shareEmoji = '👍';
+    } else {
+        shareText = 'עשיתי את השאלון של קורס ההתבגרות ואני מתחיל מההתחלה! 🌱';
+        shareEmoji = '🌱';
+    }
+    
+    const fullText = `${shareText}\n\nבואו תעשו גם אתם את השאלון ותראו איך אתם עומדים בקורס!\n\n${shareEmoji} Master X - קורס התבגרות`;
+    
+    // Try to use Web Share API if available
+    if (navigator.share) {
+        navigator.share({
+            title: 'האם אני בסדר? - קורס התבגרות Master X',
+            text: fullText,
+            url: window.location.href
+        }).catch(err => {
+            console.log('Error sharing:', err);
+            fallbackShare(fullText);
+        });
+    } else {
+        fallbackShare(fullText);
+    }
+}
+
+function fallbackShare(text) {
+    // Copy to clipboard
+    navigator.clipboard.writeText(text + '\n' + window.location.href).then(() => {
+        showShareMessage('הטקסט הועתק ללוח! 📋');
+    }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text + '\n' + window.location.href;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showShareMessage('הטקסט הועתק ללוח! 📋');
+    });
+}
+
+function showShareMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messageElement.style.position = 'fixed';
+    messageElement.style.top = '20px';
+    messageElement.style.left = '50%';
+    messageElement.style.transform = 'translateX(-50%)';
+    messageElement.style.background = 'rgba(0, 255, 65, 0.9)';
+    messageElement.style.color = '#000';
+    messageElement.style.padding = '10px 20px';
+    messageElement.style.borderRadius = '10px';
+    messageElement.style.zIndex = '1002';
+    messageElement.style.fontWeight = 'bold';
+    messageElement.style.animation = 'fadeInOut 3s ease-in-out forwards';
+    
+    document.body.appendChild(messageElement);
+    
+    setTimeout(() => {
+        if (messageElement.parentNode) {
+            messageElement.parentNode.removeChild(messageElement);
+        }
+    }, 3000);
+}
+
+// Add fadeInOut animation
+const shareStyle = document.createElement('style');
+shareStyle.textContent = `
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+        20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    }
+`;
+document.head.appendChild(shareStyle);
 
 function createConfetti() {
     const colors = ['#00ff41', '#ff0000', '#66ff66', '#33ff33', '#009900', '#cc0000'];

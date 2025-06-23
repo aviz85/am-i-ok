@@ -384,4 +384,29 @@ header h1 {
     background: linear-gradient(135deg, #002600 0%, #004d00 100%);
     color: #66ff66;
     text-shadow: 0 0 2px rgba(102, 255, 102, 0.5);
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #001a00 0%, #003300 100%);
+    color: #00ff41;
+    border: 1px solid rgba(0, 255, 65, 0.5);
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Heebo', sans-serif;
+    text-shadow: 0 0 2px rgba(0, 255, 65, 0.4);
+    margin: 15px 10px;
+    display: inline-block;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.4), 0 8px 20px rgba(0, 255, 65, 0.2);
+    background: linear-gradient(135deg, #002600 0%, #004d00 100%);
+    border-color: rgba(255, 0, 0, 0.6);
+    color: #ff0000;
+    text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
 } 
